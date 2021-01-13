@@ -29,10 +29,10 @@ class SignUp extends Component {
     });
   };
 
-  changeRoute = (data) => {
+  changeRoute = () => {
     this.props.history.push({
       pathname: "/",
-      state: data,
+      state: this.props.state,
     });
   };
 
@@ -40,9 +40,10 @@ class SignUp extends Component {
     event.preventDefault();
     console.log(this.state.email);
     console.log(this.state.password);
-    console.log(this.state.confromPassword);
+    console.log(this.state.confirmPassword);
     let user = { ...this.state };
     this.props.SignUp(user);
+    this.changeRoute();
   };
 
   render() {
@@ -60,9 +61,8 @@ class SignUp extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
-    state: "byr",
+    state: state.userReducer.users,
   };
 };
 
