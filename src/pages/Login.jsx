@@ -34,7 +34,15 @@ class LogIn extends Component {
   };
   LogInSubmit = (event) => {
     event.preventDefault();
-    this.props.Login();
+    let user = this.state;
+    this.props.Login(user);
+    console.log(this.props.state);
+    this.setState({
+      jwtToken: this.props.state,
+    });
+    console.log(this.state.email);
+    console.log(this.state.password);
+    this.changeRoute();
   };
 
   render() {
@@ -53,8 +61,9 @@ class LogIn extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    state: state.userReducer.users,
+    state: state.userReducer.jwtToken,
   };
 };
 

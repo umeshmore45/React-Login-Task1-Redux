@@ -2,9 +2,13 @@ import { userActionType } from "../constant/userAction.types";
 
 const intialState = {
   users: [],
+  jwtToken: "",
 };
 
 const userReducer = (state = intialState, action) => {
+  console.log(action);
+  let { play } = action;
+  console.log(play);
   switch (action.type) {
     case userActionType.SIGNUP:
       return {
@@ -15,7 +19,7 @@ const userReducer = (state = intialState, action) => {
     case userActionType.LOGIN:
       return {
         ...state,
-        users: { ...action.playload.user },
+        jwtToken: "Hello",
       };
 
     default:
