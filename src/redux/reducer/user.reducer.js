@@ -15,7 +15,7 @@ const userReducer = (state = intialState, action) => {
     case userActionType.LOGIN:
       return {
         ...state,
-        // users: [...state.users, ...action.playload.users],
+        users: { ...action.playload.user },
       };
 
     default:
